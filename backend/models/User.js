@@ -1,26 +1,24 @@
-const { default: userEvent } = require('@testing-library/user-event');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const UserSchema = new Schema({
-    name:{
+    name: {
         type: String,
-        require: true
+        required: true // fixed spelling
     },
-    email:{
+    email: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
-        require: true
+        required: true
     },
-    timestamp:{
+    date: {
         type: Date,
         default: Date.now
-    },
+    }
 });
-const User = mongoose.model("user",UserSchema)
-module.exports = User
+
+module.exports = mongoose.model('user', UserSchema);
