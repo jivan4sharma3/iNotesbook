@@ -4,7 +4,7 @@ import noteContext from "./noteContext";
 const NoteState = (props) => {
     const notesInitial = [
     {
-        "_id": "68b696deb6be7f9d4dd713e8",
+        "_id": "168b696deb6be7f9d4dd713e8",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes ",
         "description": "Please add proper notes in you iNotebook app",
@@ -13,7 +13,7 @@ const NoteState = (props) => {
         "__v": 0
     },
     {
-        "_id": "68b7fb5bea103701d7757d53",
+        "_id": "268b7fb5bea103701d7757d53",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note ",
         "description": "Please add proper notes in you iNotebook app",
@@ -22,7 +22,7 @@ const NoteState = (props) => {
         "__v": 0
     },
     {
-        "_id": "68b7fce789cd9c40bbb35840",
+        "_id": "368b7fce789cd9c40bbb35840",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 2",
         "description": "Please add proper notes in you iNotebook app",
@@ -31,7 +31,7 @@ const NoteState = (props) => {
         "__v": 0
     },
     {
-        "_id": "68b7fceb89cd9c40bbb35842",
+        "_id": "468b7fceb89cd9c40bbb35842",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 3",
         "description": "Please add proper notes in you iNotebook app",
@@ -40,7 +40,7 @@ const NoteState = (props) => {
         "__v": 0
     },
       {
-        "_id": "68b7fceb89cd9c40bbb35842",
+        "_id": "568b7fceb89cd9c40bbb35842",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 3",
         "description": "Please add proper notes in you iNotebook app",
@@ -49,7 +49,7 @@ const NoteState = (props) => {
         "__v": 0
     },
       {
-        "_id": "68b7fceb89cd9c40bbb35842",
+        "_id": "668b7fceb89cd9c40bbb35842",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 3",
         "description": "Please add proper notes in you iNotebook app",
@@ -58,7 +58,7 @@ const NoteState = (props) => {
         "__v": 0
     },
       {
-        "_id": "68b7fceb89cd9c40bbb35842",
+        "_id": "768b7fceb89cd9c40bbb35842",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 3",
         "description": "Please add proper notes in you iNotebook app",
@@ -67,7 +67,7 @@ const NoteState = (props) => {
         "__v": 0
     },
       {
-        "_id": "68b7fceb89cd9c40bbb35842",
+        "_id": "868b7fceb89cd9c40bbb35842",
         "user": "68b68b2d074e076f4cdca305",
         "title": "My Notes and my note 3",
         "description": "Please add proper notes in you iNotebook app",
