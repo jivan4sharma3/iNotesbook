@@ -1,6 +1,5 @@
 import { useState } from "react";
 import noteContext from "./noteContext";
-import { data } from "react-router-dom";
 
 const NoteState = (props) => {
     const host = 'http://localhost:5000'
@@ -25,7 +24,7 @@ const NoteState = (props) => {
 
 
     //Add a Notes
-    const addNotes = async (id, title, description, tag) => {
+    const addNotes = async (title, description, tag) => {
         //TODO : API Call 
         const responce = await fetch(`${host}/api/notes/addnotes`, {
             method: 'POST',
@@ -33,8 +32,9 @@ const NoteState = (props) => {
                 'Content-Type': 'application/json',
                 'Auth-Token': ' eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhiNjhiMmQwNzRlMDc2ZjRjZGNhMzA1In0sImlhdCI6MTc1Njc5MzY0NX0.2_Ylo6VYW17SC3cmXFtglFREAS6KJ6mTbwDyJ2C-ls8'
             },
-            body: JSON.stringify({ title, description, tag })
+            body: JSON.stringify({title, description, tag })
         })
+        
 
         console.log("Adding a Notes")
         const note = {
@@ -50,7 +50,19 @@ const NoteState = (props) => {
     }
 
     // Delete a Notes
-    const deleteNotes = (id) => {
+    const deleteNotes = async (id) => {
+        //API Call here 
+          const responce = await fetch(`${host}/api/notes/deletenote/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Auth-Token': ' eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhiNjhiMmQwNzRlMDc2ZjRjZGNhMzA1In0sImlhdCI6MTc1Njc5MzY0NX0.2_Ylo6VYW17SC3cmXFtglFREAS6KJ6mTbwDyJ2C-ls8'
+            },
+        })
+        const json = await responce.json()
+        console.log(json)
+
+
         console.log("Deleting a note of id : " + id)
         const newNotes = notes.filter((note) => { return note._id !== id })
         setNotes(newNotes)
@@ -68,6 +80,7 @@ const NoteState = (props) => {
             body: JSON.stringify({ title, description, tag })
         })
         const json = responce.json()
+        console.log(json)
 
         // Logic to edit a note to client side 
         for (let index = 0; index < notes.length; index++) {
