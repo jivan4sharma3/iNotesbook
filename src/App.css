@@ -20,3 +20,7 @@
     font-size: 1rem;
     margin-left: 10px;
 }
+
+.login-form{
+      max-width: 1200px;
+}
