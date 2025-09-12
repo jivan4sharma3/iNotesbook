@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState ,  } from 'react'
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
 
 
-  const [credentials, setCredentials] = useState({email:"",password:""})
+  const [credentials, setCredentials] = useState({ email: "", password: "" })
+  let history = useNavigate();
+
   const hanldeSubmit = async (e) => {
     e.preventDefault()
     // eslint-disable-next-line 
@@ -13,10 +16,18 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email : credentials.email, password: credentials.password})
+      body: JSON.stringify({ email: credentials.email, password: credentials.password })
     })
     const json = await responce.json()
     console.log(json)
+    if (json.success) {
+      // Save the authToken and redirect 
+      localStorage.setItem('token', json.authToken)
+       history("/");
+
+    } else {
+      alert("Invalided Credentials")
+    }
   }
 
   const handleONchange = (e) => {

@@ -68,6 +68,7 @@ router.post('/login', [
     // Check for validation errors here  
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        const success = false
         return res.status(400).json({ errors: errors.array() });
     }
 
@@ -95,12 +96,12 @@ router.post('/login', [
         };
         const authToken = jwt.sign(data, JWT_SECRET);
         const success = true;
-        res.json(success, authToken)
-
+        res.json({ success, authToken });
 
     } catch (error) {
+        const success = false
         console.error(error.message);
-        res.status(500).send("Internal Server  Error occurred" + error.massage);
+        res.status(500).send(" Internal Server  Error occurred" + error.massage);
     }
 })
 
