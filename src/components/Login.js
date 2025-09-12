@@ -1,4 +1,4 @@
-import React, { useState ,  } from 'react'
+import React, { useState, } from 'react'
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,7 +23,7 @@ const Login = () => {
     if (json.success) {
       // Save the authToken and redirect 
       localStorage.setItem('token', json.authToken)
-       history("/");
+      history("/");
 
     } else {
       alert("Invalided Credentials")
@@ -49,7 +49,8 @@ const Login = () => {
           <input type="password" className="form-control" value={credentials.password} onChange={handleONchange} id="password" name='password' />
         </div>
         <button type="submit" className="btn btn-primary" >Submit</button>
-      </form>    </div>
+      </form>
+    </div>
   )
 }
 
