@@ -3,7 +3,7 @@ import noteContext from '../context/notes/noteContext'
 import Notesitems from './Notesitems'
 import AddNotes from './AddNotes'
 
-const Notes = () => {
+const Notes = (props) => {
     const context = useContext(noteContext)
     const { notes, getallNotes, editNotes } = context;
     useEffect(() => {
@@ -18,7 +18,7 @@ const Notes = () => {
 
     const updateNote = (currentNote) => {
         ref.current.click()
-         setNote({
+        setNote({
             id: currentNote._id,
             etitle: currentNote.title,
             edescription: currentNote.description,
@@ -29,6 +29,7 @@ const Notes = () => {
     const handleClick = (e) => {
         editNotes(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click()
+        props.showAlert("Updated Note Successfully", "sucess")
     }
     const handleONchange = (e) => {
         setNote({ ...note, [e.target.name]: e.target.value })
@@ -36,7 +37,7 @@ const Notes = () => {
 
     return (
         <>
-            <AddNotes />
+            <AddNotes showAlert={props.showAlert} />
 
             <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
@@ -66,7 +67,7 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                         <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" onClick={handleClick} className="btn btn-primary" > Update a Note </button>
+                            <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" onClick={handleClick} className="btn btn-primary" > Update a Note </button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,7 @@ const Notes = () => {
                     {notes.length === 0 && "No notes to display"}
                 </div>
                 {notes.map((note) => {
-                    return <Notesitems key={note._id} updateNote={updateNote} note={note} />
+                    return <Notesitems key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
                 })}
             </div>
         </>

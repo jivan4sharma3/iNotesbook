@@ -2,7 +2,7 @@ import React, { useState, } from 'react'
 import { useNavigate } from "react-router-dom";
 
 
-const Signup = () => {
+const Signup = (props) => {
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
   let history = useNavigate();
@@ -20,9 +20,15 @@ const Signup = () => {
     })
     const json = await responce.json()
     console.log(json)
-    // Save the authToken and redirect 
-    localStorage.setItem('token', json.authToken)
-    history("/");
+    if (json.success) {
+      // Save the authToken and redirect 
+      localStorage.setItem('token', json.authToken)
+      history("/");
+      props.showAlert("Account Created Successfully ","success")
+    }
+     else {
+      props.showAlert("Invalide Details","danger")
+    }
   }
 
   const handleONchange = (e) => {
@@ -50,7 +56,7 @@ const Signup = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">Comform Password</label>
-          <input type="password" className="form-control" onChange={handleONchange} name='cpassword' id="cpassword"  minLength={5} required/>
+          <input type="password" className="form-control" onChange={handleONchange} name='cpassword' id="cpassword" minLength={5} required />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
