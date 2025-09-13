@@ -16,7 +16,6 @@ import { useState } from 'react';
 function App() {
 
   const [alert, setAlert] = useState(null);
-
   const showAlert = (massage, type) => {
     setAlert({
       msg: massage,
@@ -27,7 +26,6 @@ function App() {
     }, 1000)
   }
 
-
   return (
     <Router>
       <NoteState>
@@ -35,7 +33,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home showAlert={showAlert} />} />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login showAlert={showAlert} />} />
             <Route path="/signup" element={<Signup showAlert={showAlert} />} />

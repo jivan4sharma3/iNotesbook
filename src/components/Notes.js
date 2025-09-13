@@ -8,15 +8,15 @@ const Notes = (props) => {
     const context = useContext(noteContext)
     let navigate = useNavigate();
     const { notes, getallNotes, editNotes } = context;
-useEffect(() => {
-  if (!localStorage.getItem('token')) {
-    navigate('/login', { replace: true }); // ✅ redirect immediately
-  } else {
-    getallNotes(); // ✅ only fetch if logged in
-  }
-  // eslint-disable-next-line
-}, []);
-
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        } else {
+            getallNotes();
+        }
+        // eslint-disable-next-line
+    }, []);
     const ref = useRef(null)
     const refClose = useRef(null)
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
@@ -35,7 +35,6 @@ useEffect(() => {
     const handleClick = (e) => {
         editNotes(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click()
-        props.showAlert("Updated Note Successfully", "sucess")
     }
     const handleONchange = (e) => {
         setNote({ ...note, [e.target.name]: e.target.value })
@@ -43,7 +42,7 @@ useEffect(() => {
 
     return (
         <>
-            <AddNotes showAlert={props.showAlert} />
+            <AddNotes  />
 
             <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal

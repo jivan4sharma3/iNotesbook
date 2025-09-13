@@ -27,7 +27,7 @@ const Signup = (props) => {
       props.showAlert("Account Created Successfully ","success")
     }
      else {
-      props.showAlert("Invalide Details","danger")
+      props.showAlert("Invalide Details","Error")
     }
   }
 
@@ -39,7 +39,8 @@ const Signup = (props) => {
 
 
   return (
-    <div className='container login-form'>
+       <div className='container login-form mt-3'>
+      <h2>Create a account use iNoteBook</h2>
       <form onSubmit={hanldeSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
